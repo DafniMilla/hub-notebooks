@@ -1,8 +1,6 @@
 import streamlit as st
 
-# ----------------------------------------------------------------------------
-# CONFIGURAÇÃO DA PÁGINA
-# ----------------------------------------------------------------------------
+
 st.set_page_config(
     page_title="Hub de Notebooks",
     page_icon="📚",
@@ -10,9 +8,7 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# ----------------------------------------------------------------------------
-# DADOS DOS NOTEBOOKS
-# ----------------------------------------------------------------------------
+
 NOTEBOOKS = {
     "2023": {
         "1º Semestre": "https://colab.research.google.com/drive/1xSli5rWGUhvqQzIR7IO4N-DkMnjPheNk",
@@ -68,9 +64,6 @@ NOTEBOOKS = {
     },
 }
 
-# ----------------------------------------------------------------------------
-# ESTILO / ANIMAÇÃO (CSS puro, sem dependências extras)
-# ----------------------------------------------------------------------------
 st.markdown(
     """
     <style>
@@ -133,22 +126,19 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# ----------------------------------------------------------------------------
-# SIDEBAR - MENU DE NAVEGAÇÃO
-# ----------------------------------------------------------------------------
+
 st.sidebar.title("📂 Menu")
 pagina = st.sidebar.radio("Navegação", ["🏠 Início"] + [f"📅 {ano}" for ano in NOTEBOOKS.keys()])
 
-# ----------------------------------------------------------------------------
-# PÁGINA INICIAL
-# ----------------------------------------------------------------------------
+
+
 if pagina == "🏠 Início":
     st.markdown(
         """
         <div class="hero-container">
             <div class="hero-icon">📚</div>
             <div class="hero-title">Hub de Notebooks</div>
-            <div class="hero-subtitle">Todos os seus notebooks do Google Colab, organizados por ano e semestre</div>
+            <div class="hero-subtitle">Dados do Sisu (2011–2023)</div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -159,8 +149,8 @@ if pagina == "🏠 Início":
         <div class="info-card">
         <h4>👋 Bem-vindo!</h4>
         <p>
-        Este painel reúne, em um só lugar, o acesso a todos os notebooks desenvolvidos
-        ao longo dos anos, separados por ano e semestre. Use o menu à esquerda para
+        Este painel reúne, em um só lugar, o acesso a todos os notebooks desenvolvidos,
+        separados por ano e semestre. Use o menu à esquerda para
         selecionar o ano desejado e, em seguida, clique no botão do semestre para abrir
         o notebook correspondente diretamente no Google Colab.
         </p>
@@ -180,9 +170,7 @@ if pagina == "🏠 Início":
 
     st.info("💡 Selecione um ano no menu lateral para ver os notebooks disponíveis.")
 
-# ----------------------------------------------------------------------------
-# PÁGINAS POR ANO
-# ----------------------------------------------------------------------------
+
 else:
     ano_selecionado = pagina.replace("📅 ", "")
     st.header(f"📅 Notebooks de {ano_selecionado}")
